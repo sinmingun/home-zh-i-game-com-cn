@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sinmingun.github.io/home-zh-i-game-com-cn/sitemap.xml
