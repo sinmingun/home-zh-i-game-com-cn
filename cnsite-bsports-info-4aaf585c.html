@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B体育 · 简明使用指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.65;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2b 0%, #162b3e 100%);
+            color: #e7edf2;
+            padding: 5rem 2rem 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -10%;
+            width: 120%;
+            height: 80px;
+            background: #f5f7fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 0.6rem auto;
+            font-size: 1.05rem;
+            color: #b6cbdb;
+            font-weight: 350;
+        }
+
+        .hero .accent-line {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: #f6b83d;
+            margin-top: 1.2rem;
+            border-radius: 4px;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem 1.8rem;
+            width: 100%;
+            background: #f5f7fa;
+            z-index: 2;
+            position: relative;
+        }
+
+        .intro-block {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem 2rem 2.2rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.04);
+            margin-bottom: 2rem;
+        }
+
+        .intro-block p {
+            margin-bottom: 1.2rem;
+            color: #1f2c3b;
+            font-size: 1rem;
+        }
+
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .accent-link {
+            color: #c9771e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.2s ease, color 0.2s ease;
+        }
+
+        .accent-link:hover {
+            border-bottom: 1px solid #c9771e;
+            color: #a55f12;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 2.4rem 0;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            flex: 1 1 200px;
+            border-radius: 14px;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border-left: 4px solid #f6b83d;
+            transition: transform 0.15s ease, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f1d2b;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #3c4b5c;
+            line-height: 1.5;
+        }
+
+        .reminder-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 1.5rem 0;
+            border: 1px solid #e4e9f0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .reminder-box h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #162b3e;
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
+        }
+
+        .reminder-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reminder-box ul li {
+            padding: 0.4rem 0 0.4rem 1.8rem;
+            position: relative;
+            color: #1f2c3b;
+            font-size: 0.95rem;
+        }
+
+        .reminder-box ul li::before {
+            content: '•';
+            color: #f6b83d;
+            font-weight: 700;
+            position: absolute;
+            left: 0.2rem;
+        }
+
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0 0.5rem 0;
+            border: 1px solid #e4e9f0;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #162b3e;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item strong {
+            display: inline-block;
+            font-weight: 500;
+            color: #0f1d2b;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item p {
+            margin-left: 0.2rem;
+            font-size: 0.92rem;
+            color: #364759;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce2ea;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #68778b;
+            text-align: center;
+            padding: 1.8rem 1rem 2.2rem 1rem;
+            border-top: 1px solid #dce2ea;
+            margin-top: 1.2rem;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-note a {
+            color: #68778b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .footer-note a:hover {
+            color: #c9771e;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.5rem 1.5rem 3rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .content {
+                padding: 1.5rem 1rem 3rem 1rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .feature-card {
+                flex: 1 1 auto;
+            }
+            .intro-block, .reminder-box, .faq-summary {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>简明·可用·清晰</h1>
+    <p>一个稳定的访问路径，一次明确的引导。</p>
+    <p>从结构到细节，了解 <a href="https://cnsite--bsports.com" class="accent-link" style="color: #f6b83d; border-bottom: 1px solid rgba(246,184,61,0.3);">B体育</a> 的基础使用方法与日常提醒。</p>
+    <div class="accent-line"></div>
+</section>
+
+<div class="content">
+    <div class="intro-block">
+        <p><strong>站在实用一侧</strong> —— 在接触任何在线服务前，先确认入口的可靠性。对 <a href="https://cnsite--bsports.com" class="accent-link">B体育</a> 而言，一个干净、直达的域名能省去大量检索时间。下面是从访问到日常操作的几条核心信息，适合新用户快速熟悉，也适合老用户对照检查习惯。</p>
+        <p>平台本身持续迭代，但基本原则不变：使用最新浏览器、保持网络环境稳定、留意官方渠道发布的调整。本文不罗列功能清单，只提炼真正影响体验的关键点。</p>
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>直达路径</h3>
+            <p>直接使用当前有效域名 <a href="https://cnsite--bsports.com" class="accent-link">B体育</a>，避免中间跳转或第三方聚合页带来的延迟与信息偏差。</p>
+        </div>
+        <div class="feature-card">
+            <h3>界面语言</h3>
+            <p>全界面中文覆盖，选项清晰。未登录状态下即可浏览大部分资讯，降低初次操作门槛。</p>
+        </div>
+        <div class="feature-card">
+            <h3>账户安全</h3>
+            <p>建议开启二次验证，定期更新密码。不要在公共设备上保存登录态，退出时清除浏览器缓存。</p>
+        </div>
+        <div class="feature-card">
+            <h3>访问协议</h3>
+            <p>始终使用 HTTPS 加密连接，检查地址栏锁标。非加密页面下不提交任何个人资料或凭证。</p>
+        </div>
+    </div>
+
+    <div class="reminder-box">
+        <h2>日常访问提醒</h2>
+        <ul>
+            <li>每次通过书签或已知正确域名直接进入，不要依赖搜索结果中的广告链接。</li>
+            <li>如果遇到页面加载异常，先核对网络连接与 DNS 状态，再检查域名是否为 <a href="https://cnsite--bsports.com" class="accent-link">B体育</a> 官方地址。</li>
+            <li>平台通知会通过站内消息或注册邮箱发送，不轻信第三方社交渠道的所谓“紧急公告”。</li>
+            <li>定期清除浏览器缓存与 Cookies，或使用无痕模式进行登录操作，减少本地残留数据。</li>
+        </ul>
+    </div>
+
+    <div class="faq-summary">
+        <h2>常见疑问摘要</h2>
+        <div class="faq-item">
+            <strong>· 是否需要额外工具才能访问？</strong>
+            <p>正常情况下不需要。保持网络通畅、使用主流浏览器即可完成注册与浏览。特殊区域可自行了解本地网络政策。</p>
+        </div>
+        <div class="faq-item">
+            <strong>· 如何确认当前使用的是最新界面？</strong>
+            <p>刷新页面后查看底部版本号或帮助中心日期。也可对比 <a href="https://cnsite--bsports.com" class="accent-link">B体育</a> 页面样式是否与官方宣传截图一致。</p>
+        </div>
+        <div class="faq-item">
+            <strong>· 遇到链接失效怎么办？</strong>
+            <p>优先检查网络与浏览器设置，其次通过官方邮件或已知的备用页面获取当前可用地址。不要随意点击不明短链接。</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="background: #ffffff; border-radius: 14px; padding: 1.4rem 1.8rem; margin-top: 1.5rem;">
+        <p style="font-size: 0.95rem; color: #1f2c3b;"><strong>一句话总结：</strong> 把 <a href="https://cnsite--bsports.com" class="accent-link">B体育</a> 加入书签，保持浏览习惯干净，定期检查官方通知。平台本身设计得足够直观，大部分疑惑都能在帮助中心找到答案。</p>
+    </div>
+
+    <div class="footer-note">
+        <span>基于当前公开信息整理 · 页面仅为介绍性质，不构成操作建议</span>
+        <br><span style="display: inline-block; margin-top: 4px;">— 可随时通过 <a href="https://cnsite--bsports.com" style="color: inherit;">B体育</a> 获取最新版本 —</span>
+    </div>
+</div>
+
+</body>
+</html>
