@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JRS直播 · 持续关注的导航页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f9fb;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e2024;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.03);
+            padding: 2.2rem 2.5rem 2.8rem;
+            transition: all 0.2s;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eef0f2;
+            margin-bottom: 2.8rem;
+        }
+
+        .nav-home {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.01em;
+            color: #1e2024;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: #4a4f58;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: #0b6e4f;
+        }
+
+        /* hero 区 */
+        .hero {
+            margin-bottom: 3.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 650;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            color: #121416;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.2rem;
+            color: #5b606a;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            color: #2e3138;
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .hero .tagline {
+            margin-top: 1rem;
+            padding: 0.45rem 1rem;
+            background: #f1f5f9;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #1d5e47;
+            font-weight: 500;
+        }
+
+        /* 模块 */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 620;
+            margin: 2.4rem 0 1.2rem 0;
+            letter-spacing: -0.01em;
+            color: #121416;
+            border-left: 4px solid #0b6e4f;
+            padding-left: 1rem;
+        }
+
+        .three-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .scene-card {
+            flex: 1 1 180px;
+            background: #fafbfc;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem;
+            border: 1px solid #e9ecef;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .scene-card:hover {
+            background: #f3f6f9;
+            border-color: #cbd5e0;
+        }
+
+        .scene-card .emoji-bg {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .scene-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #121416;
+        }
+
+        .scene-card p {
+            font-size: 0.88rem;
+            color: #3e434c;
+            line-height: 1.5;
+        }
+
+        /* 常见说明 / FAQ */
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #edf0f2;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #1c1f23;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            color: #40444e;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid #e4e8ec;
+            font-size: 0.85rem;
+            color: #5d626d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footnote a {
+            color: #0b6e4f;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted transparent;
+        }
+
+        .footnote a:hover {
+            border-bottom-color: #0b6e4f;
+        }
+
+        @media (max-width: 580px) {
+            .container {
+                padding: 1.6rem 1.2rem 2rem;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .three-grid {
+                flex-direction: column;
+            }
+
+            .scene-card {
+                flex: 1 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <nav class="nav">
+            <a href="https://cn-site-jrs.com" class="nav-home">JRS直播</a>
+            <div class="nav-links">
+                <a href="#scenes">场景</a>
+                <a href="#faq">说明</a>
+                <a href="https://cn-site-jrs.com">JRS直播</a>
+            </div>
+        </nav>
+
+        <!-- Hero 区域 -->
+        <div class="hero">
+            <h1>JRS直播 · 常回常新的导航</h1>
+            <div class="hero-meta">
+                <span>◈ 持续关注</span>
+                <span>◈ 轻量入口</span>
+                <span>◈ 稳定收藏</span>
+            </div>
+            <p>
+                对于经常需要追踪赛事动态的用户而言，一个可以直接返回的起点比繁杂的搜索更高效。
+                <a href="https://cn-site-jrs.com">JRS直播</a> 提供稳定的直达路径，无需每次重新查找。
+                收藏本页即可在任意设备快速进入直播环境，节奏由你掌控。
+            </p>
+            <span class="tagline">再次返回，只需一次点击</span>
+        </div>
+
+        <!-- 三个场景模块 -->
+        <h2 class="section-title" id="scenes">典型使用场景</h2>
+        <div class="three-grid">
+            <div class="scene-card">
+                <span class="emoji-bg">📱</span>
+                <h3>跨设备快速跳转</h3>
+                <p>手机、平板、电脑之间切换时，直接打开收藏的页面，不必重新输入或扫码，保持关注节奏不中断。</p>
+            </div>
+            <div class="scene-card">
+                <span class="emoji-bg">📌</span>
+                <h3>浏览器固定标签</h3>
+                <p>将页面固定在浏览器标签栏，每次打开浏览器即可直达，适合高频关注比赛进程和实时信息的用户。</p>
+            </div>
+            <div class="scene-card">
+                <span class="emoji-bg">🔄</span>
+                <h3>再次访问的最佳锚点</h3>
+                <p>无论上次离开多久，一个稳定的入口让你快速回到 <a href="https://cn-site-jrs.com" style="color: #0b6e4f; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">JRS直播</a> 界面，减少操作步骤。</p>
+            </div>
+        </div>
+
+        <!-- 常见说明区域 (FAQ摘要) -->
+        <h2 class="section-title" id="faq">常见说明</h2>
+        <div class="faq-item">
+            <strong>如何将本页加入收藏夹？</strong>
+            <p>浏览器地址栏右侧（或书签菜单）选择「添加书签」，命名后保存。移动端同样支持添加到主屏幕，具体方式因设备而异。</p>
+        </div>
+        <div class="faq-item">
+            <strong>再次访问时是否需要重新登录？</strong>
+            <p>通常无需额外操作。直接从收藏或固定标签打开 <a href="https://cn-site-jrs.com">JRS直播</a> 即可进入之前的直播环境，前提是浏览器未清除站点数据。</p>
+        </div>
+        <div class="faq-item">
+            <strong>页面更新会影响已保存的入口吗？</strong>
+            <p>不会。本导航页结构保持稳定，内部指向始终使用同一域名，收藏的链接长期有效，无需手动更新。</p>
+        </div>
+        <div class="faq-item">
+            <strong>为什么强调“再次访问”而不是首次？</strong>
+            <p>首次使用需了解整体布局，而重复访问追求效率。本页专为回访设计，减少中间环节，把注意力还给内容本身。</p>
+        </div>
+
+        <!-- 脚注 -->
+        <div class="footnote">
+            <span>© 持续导航 · 极简入口</span>
+            <span>
+                <a href="https://cn-site-jrs.com">JRS直播</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
